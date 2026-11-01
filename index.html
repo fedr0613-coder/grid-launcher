@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridLauncher - Лучший лаунчер Minecraft</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0b130f;
+            color: #e6efe3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        #leaves-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(22, 25, 22, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #4a514a;
+        }
+        .logo {
+            font-family: 'Consolas', monospace;
+            font-size: 32px;
+            font-weight: bold;
+            color: #7be04a;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px rgba(110, 224, 74, 0.6);
+        }
+        .nav-btn {
+            background: #3f7d2c;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #264d1a;
+            transition: 0.3s;
+        }
+        .nav-btn:hover {
+            background: #66c93f;
+            box-shadow: 0 0 15px rgba(123, 224, 74, 0.5);
+            transform: translateY(-2px);
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(110, 224, 74, 0.4);
+        }
+        .hero p {
+            font-size: 20px;
+            color: #98a698;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #3f7d2c;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px 60px;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 3px solid #264d1a;
+            position: relative;
+            transition: 0.3s;
+            box-shadow: 0 4px 0 #264d1a;
+        }
+        .download-btn:hover {
+            background: #66c93f;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 0 #264d1a, 0 0 30px rgba(123, 224, 74, 0.6);
+        }
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 0 0 #264d1a;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+            background: rgba(22, 25, 22, 0.9);
+            border-top: 2px solid #4a514a;
+        }
+        .feature-card {
+            background: rgba(40, 45, 40, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #4a514a;
+            width: 300px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            border-color: #7be04a;
+            transform: translateY(-5px);
+        }
+        .feature-card h3 {
+            color: #7be04a;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        .feature-card p {
+            color: #d6e0d3;
+            line-height: 1.4;
+        }
+        .warning {
+            text-align: center;
+            padding: 20px;
+            color: #ff7b7b;
+            font-size: 14px;
+            background: rgba(40, 20, 20, 0.5);
+            border-top: 1px solid #ff7b7b;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #98a698;
+            font-size: 14px;
+            background: #0b130f;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="leaves-canvas"></canvas>
+    <header>
+        <div class="logo">GRID</div>
+        <a href="https://github.com/fedr0613-coder/grid-launcher/releases" class="nav-btn" target="_blank">GitHub</a>
+    </header>
+    <section class="hero">
+        <h1>GridLauncher</h1>
+        <p>Современный лаунчер Minecraft с 3D-скинами, онлайн-галереей и автоматической установкой модов. Забудь про скучные интерфейсы.</p>
+        
+        <!-- ВАЖНО: ЗАМЕНИ v2.1 НА НАЗВАНИЕ СВОЕГО РЕЛИЗА -->
+        <a href="https://github.com/fedr0613-coder/grid-launcher/releases/download/v2.1/GridLauncher.exe" class="download-btn">Скачать бесплатно</a>
+    </section>
+    <section class="features">
+        <div class="feature-card">
+            <h3>3D-Скины</h3>
+            <p>Крути, верти и рассматривай скины со всех сторон прямо в лаунчере.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Галерея скинов</h3>
+            <p>Сотни готовых скинов из интернета. Выбирай любой в один клик.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Моды в 1 клик</h3>
+            <p>Встроенный поиск по CurseForge и умный ИИ для сборок.</p>
+        </div>
+    </section>
+    <div class="warning">
+        ⚠️ Если Windows выдает предупреждение, нажмите «Подробнее» -> «Выполнить в любом случае».
+    </div>
+    <footer>
+        © 2026 GridLauncher.
+    </footer>
+    <script>
+        const canvas = document.getElementById('leaves-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        });
+        const leaves = [];
+        const colors = ["#4c8f34", "#5fae3f", "#3b7a2a", "#7ccf4f", "#2f6b22"];
+        for (let i = 0; i < 50; i++) {
+            leaves.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 10 + 5,
+                speedY: Math.random() * 2 + 1,
+                speedX: Math.random() * 1 - 0.5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rotation: Math.random() * 360,
+                rotSpeed: Math.random() * 2 - 1
+            });
+        }
+        function drawLeaves() {
+            ctx.clearRect(0, 0, width, height);
+            leaves.forEach(leaf => {
+                ctx.save();
+                ctx.translate(leaf.x, leaf.y);
+                ctx.rotate(leaf.rotation * Math.PI / 180);
+                ctx.fillStyle = leaf.color;
+                ctx.globalAlpha = 0.6;
+                ctx.fillRect(-leaf.size / 2, -leaf.size / 2, leaf.size, leaf.size);
+                ctx.restore();
+                leaf.y += leaf.speedY;
+                leaf.x += leaf.speedX;
+                leaf.rotation += leaf.rotSpeed;
+                if (leaf.y > height) {
+                    leaf.y = -20;
+                    leaf.x = Math.random() * width;
+                }
+            });
+            requestAnimationFrame(drawLeaves);
+        }
+        drawLeaves();
+    </script>
+</body>
+</html>
